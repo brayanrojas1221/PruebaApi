@@ -8,13 +8,18 @@ class DB {
     private function __construct() {
         $host = 'localhost';
         $puerto = '5432';
-        $nombreBD = 'postgres';
-        $usuario = 'usuario';
-        $contrasena = 'contraseña';
+        $nombreBD = 'chexter';
+        $usuario = 'postgres';
+        $contrasena = 'root';
 
         try {
-            $this->conexion = new PDO("pgsql:host=$host;port=$puerto;dbname=$nombreBD", $usuario, $contrasena);
-            $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->conexion = pg_connect("
+                host=$host
+                port=$puerto
+                dbname=$nombreBD
+                user=$usuario
+                password=$contrasena
+            ");
         } catch (PDOException $e) {
             die("ERROR: " . $e->getMessage());
         }

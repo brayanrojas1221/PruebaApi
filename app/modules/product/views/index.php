@@ -28,7 +28,7 @@
       <div class="row" id="containerProducts">
       </div>
     </div>
-    <script src="./js/products.js">
+    <script src="./app/js/products.js">
         getProducts();
     </script>
   </body>

@@ -3,7 +3,7 @@ function logged() {
 }
 function logout() {
   localStorage.removeItem("token");
-  window.location.href = "falta la ruta";
+  window.location.href = "http://localhost/chexter/login";
 }
 
 function generateHtmlProducts(data) {
@@ -54,22 +54,22 @@ function generateHtmlProducts(data) {
 }
 // ---------------------------------------- //
 
-// const token = logged();
+const token = logged();
 
-// if (token == "" || token == null) {
-//   window.location.href = "url de login";
-// } else {
-//   fetch("url de los productos", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       generateHtmlProducts(data);
-//     })
-//     .catch((error) => {
-//       console.error("Error:", error);
-//     });
-// }
+if (token == "" || token == null) {
+  window.location.href = "http://localhost/chexter/login";
+} else {
+  fetch("http://localhost/chexter/product", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      generateHtmlProducts(data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}

@@ -10,19 +10,19 @@
 
 <body id="FormLogin">
     <div class="container vh-100 d-flex align-items-center justify-content-center">
-        <form onsubmit="login(event)">
+        <form id="formLogin" method="post">
             <div class="card bg-light">
                 <h5 class="card-title text-center mt-3 bg-light">ApiPrueba</h5>
                 <div class="card-body bg-light">
                     <div class="form-outline mb-2">
                         <label class="form-label" for="username">Usuario</label>
-                        <input  required type = "text" id = "username" name = "username" class = "form-control" placeholder = "Ingrese su usuario" 
+                        <input  required type="text" id="username" value="admin" name="username" class="form-control" placeholder="Ingrese su usuario" 
                         />
                     </div>
                     <div class="form-outline mb-2">
                         <label class="form-label" for="password">Contraseña</label>
-                        <input required id = "password" name = "pasword" type = "password" class = "form-control" 
-                          placeholder = "Ingrese su contraseña" 
+                        <input required id="password" name="pasword" value="admin" type="password" class="form-control" 
+                          placeholder="Ingrese su contraseña" 
                         />
                     </div>
                     <button type="submit"  id="btnLogin" class="btn btn-primary btn-block mb-2">Iniciar sesión</button>
@@ -31,6 +31,6 @@
         </form>
     </div>
 
-    <script src="./js/login.js"></script>
+    <script src="./app/js/login.js"></script>
 </body>
 </html>

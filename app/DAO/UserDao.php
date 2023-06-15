@@ -10,12 +10,8 @@ class UserDAO {
 
     public function getByUsernameAndPassword($username, $password) {
 
-        $query = "SELECT * FROM clients WHERE usuario = $1 and contrasena = $2 and estado = true";
-
-        $passwordMD5 = md5($password);
-
-        $result = pg_query_params($this->connection, $query, array($username, $passwordMD5));
-        
+        $query = "SELECT * FROM users WHERE username = $1 and password = $2 ";
+        $result = pg_query_params($this->connection, $query, array($username, $password));
         if (!($result && pg_num_rows($result) > 0))
             return null;
     
@@ -23,8 +19,8 @@ class UserDAO {
         
         $user = \UserModel::getInstance();
 
-        $user->setId($row['id_client']);
-        $user->setUserName($row['usuario']);
+        $user->setId($row['id']);
+        $user->setUserName($row['username']);
 
         return $user->toArray();
     }
