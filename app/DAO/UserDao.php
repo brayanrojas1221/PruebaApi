@@ -10,7 +10,7 @@ class UserDAO {
 
     public function getByUsernameAndPassword($username, $password) {
 
-        $query = "SELECT * FROM clients WHERE usuario = $1 and contrasena = $2 and estado = true";
+        $query = "SELECT * FROM users WHERE usuario = $1 and contrasena = $2 and estado = true";
 
         $passwordMD5 = md5($password);
 
