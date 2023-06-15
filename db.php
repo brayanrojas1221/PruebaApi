@@ -9,8 +9,8 @@ class DB {
         $host = 'localhost';
         $puerto = '5432';
         $nombreBD = 'chexter';
-        $usuario = 'postgres';
-        $contrasena = 'root';
+        $usuario = 'root';
+        $contrasena = '';
 
         try {
             $this->conexion = pg_connect("
