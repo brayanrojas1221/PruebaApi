@@ -7,13 +7,13 @@ $routes = [
     "/product" => "\APP\Modules\Product\Controller::index",
 ];
 
-if (!isset($routes[$uri])) {
-    header("HTTP/1.1 404 Not Found");
+if ($uri != "/login" && !isset($_SESSION['user'])) {
+    header("Location: /chexter/login");
     exit();
 }
 
-if ($uri != "/login" && !isset($_SESSION['user'])) {
-    header("Location: /chexter/login");
+if (!isset($routes[$uri])) {
+    header("HTTP/1.1 404 Not Found");
     exit();
 }
 
