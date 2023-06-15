@@ -39,6 +39,5 @@ foreach (glob(__DIR__ . "/app/DAO/*.php") as $filename) {
 
 require_once __DIR__ . "/db.php";
 require_once __DIR__ . str_replace("\\", "/", strtolower($class)) . ".php";
-require_once __DIR__ . str_replace([ "\\", "controller" ], [ "/", "model" ], strtolower($class)) . ".php";
 
 $class::$method();
