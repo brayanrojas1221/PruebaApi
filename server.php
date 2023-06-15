@@ -4,6 +4,7 @@ $uri = parse_url(str_replace("/" . PROJECT_NAME, "", $_SERVER['REQUEST_URI']), P
 
 $routes = [
     "/login" => "\APP\Modules\Login\Controller::index",
+    "/product" => "\APP\Modules\Product\Controller::index",
 ];
 
 if (!isset($routes[$uri])) {
@@ -18,7 +19,7 @@ if ($uri != "/login" && !isset($_SESSION['user'])) {
 
 list($class, $method) = explode("::", $routes[$uri]);
 
-global $views_path; $views_path = __DIR__ . str_replace([ "\\", 'controller' ], [ "/", "views/" ], strtolower($class));
+global $views_path; $views_path = __DIR__ . str_replace([ "\\", 'controller' ], [ "/", "views" ], strtolower($class));
 function render($view, $data = []) {
     global $views_path;
     extract($data);
@@ -32,6 +33,12 @@ function json($data) {
     exit();
 }
 
+foreach (glob(__DIR__ . "/app/DAO/*.php") as $filename) {
+    require_once $filename;
+}
+
+require_once __DIR__ . "/db.php";
 require_once __DIR__ . str_replace("\\", "/", strtolower($class)) . ".php";
+require_once __DIR__ . str_replace([ "\\", "controller" ], [ "/", "model" ], strtolower($class)) . ".php";
 
 $class::$method();
