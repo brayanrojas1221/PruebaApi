@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Clients</title>
 </head>
+
 <body id="FormLogin">
     <div class="container vh-100 d-flex align-items-center justify-content-center">
         <form onsubmit="login(event)">
@@ -14,7 +15,7 @@
                 <h5 class="card-title text-center mt-3 bg-light">ApiPrueba</h5>
                 <div class="card-body bg-light">
                     <div class="form-outline mb-2">
-                        <label class="form-label" for="user">Usuario</label>
+                        <label class="form-label" for="username">Usuario</label>
                         <input  required type = "text" id = "username" name = "username" class = "form-control" placeholder = "Ingrese su usuario" 
                         />
                     </div>
@@ -29,6 +30,7 @@
             </div>
         </form>
     </div>
+
     <script src="./js/login.js"></script>
 </body>
 </html>
