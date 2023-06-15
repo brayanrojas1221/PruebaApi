@@ -5,6 +5,7 @@ $uri = parse_url(str_replace("/" . PROJECT_NAME, "", $_SERVER['REQUEST_URI']), P
 $routes = [
     "/login" => "\APP\Modules\Login\Controller::index",
     "/product" => "\APP\Modules\Product\Controller::index",
+    "/product/getProducts" => "\APP\Modules\Product\Controller::getProducts",
 ];
 
 if ($uri != "/login" && !isset($_SESSION['user'])) {

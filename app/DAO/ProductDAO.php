@@ -8,26 +8,31 @@ class ProductDAO {
         $this->connection = \DB::getInstance()->getConnection();
     }
 
-    public function getById($id) {
+    public function getProducts() {
 
-        $query = "SELECT * FROM products WHERE id = $1";
+        $query = "SELECT * FROM products";
 
-        $result = pg_query_params($this->connection, $query, [ $id ]);
+        $result = pg_query_params($this->connection, $query,[]);
         
         if (!($result && pg_num_rows($result) > 0))
             return null;
     
-        $row = pg_fetch_assoc($result);
-        
-        $Product = \ProductModel::getInstance();
+        $Products = array();
+    
+        while ($row = pg_fetch_assoc($result)) {
 
-        $Product->setId($row['id_client']);
-        $Product->setName($row['name']);
-        $Product->setPrice($row['price']);
-        $Product->setDescription($row['description']);
-        $Product->setQuantity($row['quantity']);
-        $Product->setCreatedAt($row['created_at']);
+            $Product = \ProductModel::getInstance();
 
-        return $Product->toArray();
+            $Product->setId($row['id']);
+            $Product->setName($row['name']);
+            $Product->setPrice($row['price']);
+            $Product->setDescription($row['description']);
+            $Product->setQuantity($row['quantity']);
+            $Product->setCreatedAt($row['created_at']);
+                        
+            array_push($Products, $Product->toArray());
+        }
+    
+        return $Products;
     }
 }

@@ -7,7 +7,7 @@ function logout() {
 }
 
 function generateHtmlProducts(data) {
-  if (data && Array.isArray(data)) {
+  if (data) {
     // Obtener el contenedor HTML donde se mostrar�n los productos
     const containerProducts = document.getElementById("containerProducts");
     containerProducts.innerHTML='';
@@ -25,15 +25,15 @@ function generateHtmlProducts(data) {
 
       const title = document.createElement("h5");
       title.classList.add("card-title");
-      title.textContent = `producto: ${product.nombre}`;
+      title.textContent = `producto: ${product.name}`;
 
       const description = document.createElement("p");
       description.classList.add("card-text");
-      description.textContent = product.descripcion;
+      description.textContent = product.description;
 
       const price = document.createElement("p");
       price.classList.add("card-text");
-      price.textContent = "Precio: $" + product.precio;
+      price.textContent = "Precio: $" + product.price;
 
       const buttom = document.createElement("a");
       buttom.classList.add("btn","btn-primary");
@@ -59,7 +59,7 @@ const token = logged();
 if (token == "" || token == null) {
   window.location.href = "http://localhost/chexter/login";
 } else {
-  fetch("http://localhost/chexter/product", {
+  fetch("http://localhost/chexter/product/getProducts", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
